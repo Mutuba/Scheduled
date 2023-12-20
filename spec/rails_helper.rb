@@ -5,7 +5,7 @@ require 'rspec/rails'
 require 'database_cleaner'
 
 # Require support files
-Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
+Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
 
 # Configure shoulda matchers
 Shoulda::Matchers.configure do |config|
@@ -16,8 +16,6 @@ Shoulda::Matchers.configure do |config|
 end
 
 Rspec.configure do |config|
-  # ...
-  config.include FactoryGirl::Syntax::Methods
   config.include Warden::Test::Helpers
   config.include ActionCable::TestHelper
   config.include ActiveJob::TestHelper

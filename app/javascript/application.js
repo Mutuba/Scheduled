@@ -3,3 +3,5 @@ import "@hotwired/turbo-rails";
 import "controllers";
 // import "bootstrap";
 console.log("All done am fickeed");
+import "trix"
+import "@rails/actiontext"

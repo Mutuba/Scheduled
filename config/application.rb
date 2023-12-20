@@ -22,12 +22,23 @@ module Scheduled
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
+    config.autoload_paths += %W(#{config.root}/lib)
 
-    # Configuration for the application, engines, and railties goes here.
-    #
-    # These settings can be overridden in specific environments using the files
-    # in config/environments, which are processed later.
-    #
+    config.i18n.available_locales = [:en, :de, :fr]
+    config.i18n.default_locale = :en
+    config.beginning_of_week = :sunday
+    config.assets.precompile += %w( simple_calendar_custom.css )
+
+    config.geocoder = {
+      ip_lookup: :maxmind,
+      maxmind: {
+        service: :city,
+        basic_auth: {
+          username: ENV['MAX_MIND_ACCOUNT_ID'],
+          password: ENV['MAX_MIND_LICENSE_KEY']
+        }
+      }
+    }
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 

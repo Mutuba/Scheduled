@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -22,19 +24,11 @@
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
-class User < ApplicationRecord
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
-         :omniauthable, omniauth_providers: [:google_oauth2]
-
-
-  def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.email = auth.info.email
-      user.password = Devise.friendly_token[0, 20]
-      user.full_name = auth.info.name
-      user.avatar_url = auth.info.image 
-    end
+# spec/factories/users.rb
+FactoryBot.define do
+  factory :user do
+    email { 'jane.doe@hey.com' }
+    password { 'SecretPassword123' }
+    password_confirmation { 'SecretPassword123' }
   end
 end
