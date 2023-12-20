@@ -67,6 +67,11 @@ group :development, :test do
   gem 'pry-rails' 
   gem 'pry-doc'
   gem 'annotate'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'shoulda-matchers', '~> 3.1'
+  gem 'faker'
+  gem 'database_cleaner'
 end
 
 group :development do
