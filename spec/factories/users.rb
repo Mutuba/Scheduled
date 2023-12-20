@@ -11,6 +11,7 @@
 #  fullname               :string
 #  office_hours_end       :time
 #  office_hours_start     :time
+#  provider               :string
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
@@ -24,7 +25,6 @@
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
-# spec/factories/users.rb
 FactoryBot.define do
   factory :user do
     email { 'jane.doe@hey.com' }
