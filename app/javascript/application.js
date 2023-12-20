@@ -2,8 +2,6 @@
 import "@hotwired/turbo-rails";
 import "controllers";
 import "bootstrap";
-console.log("All done am fickeed");
-
-document.addEventListener("turbolinks:load", function () {
-  $('[data-bs-toggle="modal"]').modal();
-});
+// document.addEventListener("turbolinks:load", function () {
+//   $('[data-bs-toggle="modal"]').modal();
+// });
