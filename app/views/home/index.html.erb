@@ -1,36 +1,34 @@
 <div class="container d-flex align-items-center justify-content-center">
   <div>
+    <br />
+    <br />
+    <h1>Schedule Me</h1>
+    <p>We are excited to have you.</p>
+    <br />
 
-<div data-controller="hello">
-<br/>
-  <input data-hello-target="name" type="text">
-
-  <button  data-action="click->hello#greet" class="btn btn-primary">Greet</button>
-</div>
-
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+    <div data-controller="hello">
+      <br />
+      <input data-hello-target="name" type="text">
+      <button data-action="click->hello#greet" class="btn btn-primary">Greet</button>
     </div>
-  </div>
-</div>
 
-</div>
+    <!-- Your HTML with the modal trigger button -->
+    <button
+      type="button"
+      class="btn btn-primary"
+      data-action="click->modal#showModal"
+      data-target="modal.modalContent"
+    >
+      Set office hours
+    </button>
+
+    <!-- Your Bootstrap modal -->
+    <turbo-frame id="modal-frame">
+      <%= render 'shared/modal' %>
+    </turbo-frame>
+
+    <button type='button' class="btn btn-primary" onclick="location.href='<%= dashboard_path() %>';">
+      Go to Calendar
+    </button>
+  </div>
 </div>
