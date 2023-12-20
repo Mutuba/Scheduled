@@ -66,6 +66,7 @@ group :development, :test do
   gem 'byebug'
   gem 'pry-rails' 
   gem 'pry-doc'
+  gem 'annotate'
 end
 
 group :development do
