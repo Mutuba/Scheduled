@@ -19,7 +19,6 @@ gem 'devise'
 gem 'google-api-client', '~> 0.44'
 
 gem 'geocoder'
-
 # gem 'google-apis-calendar', require: 'google/apis/calendar_v3'
 
 gem 'omniauth-google-oauth2'

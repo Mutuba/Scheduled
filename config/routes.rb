@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   root "home#index"
   resources :events
   resources :bookings
-  post 'office_hours', to: 'home#office_hours', as: :office_hours
-  patch 'office_hours', to: 'home#office_hours'
+  resources :users, only: [:create, :update, :new]
+  get 'new_office_hours', to: 'home#new_office_hours'
   get 'dashboard', to: 'dashboard#index'
 end

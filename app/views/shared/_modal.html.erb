@@ -8,8 +8,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <!-- Your form goes here -->
-        <%= form_with model: current_user, url: office_hours_path(current_user), data: { turbo_frame: "modal-frame", action: "ajax:success->modal#updateContent ajax:error->modal#updateContent", type: "json" } do |form| %>
+        <%= form_with model: current_user, url: office_hours_path(current_user), data: { turbo_frame: "modal-frame" } do |form| %>
           <div class="mb-3">
             <%= form.label :office_hours_start, class: "form-label" %>
             <%= form.time_field :office_hours_start, class: "form-control" %>
@@ -20,7 +19,7 @@
             <%= form.time_field :office_hours_end, class: "form-control" %>
           </div>
 
-          <input type="submit" name="commit" value="Save changes" class="btn btn-primary" data-disable-with="Save changes" />
+          <%= form.submit "Save changes", class: "btn btn-primary" %>
         <% end %>
       </div>
     </div>
