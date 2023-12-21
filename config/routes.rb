@@ -9,10 +9,10 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
 
-  root 'home#index'
+  root 'users#index'
   resources :events
   resources :bookings
-  resources :users, only: %i[create update new]
-  get 'new_office_hours', to: 'home#new_office_hours'
+  resources :users, only: %i[create update new index]
+
   get 'dashboard', to: 'dashboard#index'
 end
