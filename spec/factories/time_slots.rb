@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: time_slots
@@ -19,8 +21,8 @@
 #
 FactoryBot.define do
   factory :time_slot do
-    start_at { "2023-12-20 16:07:24" }
-    end_at { "2023-12-20 16:07:24" }
+    start_at { '2023-12-20 16:07:24' }
+    end_at { '2023-12-20 16:07:24' }
     event { nil }
   end
 end

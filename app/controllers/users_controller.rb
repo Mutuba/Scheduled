@@ -1,18 +1,19 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   before_action :authenticate_user!
 
-  def index
-  end
+  def index; end
 
   def new
-    current_user = User.new
+    User.new
   end
 
-  def create    
+  def create
     @user = current_user
     respond_to do |format|
       if @user.update(office_hours_params)
-        format.html { redirect_to root_path, notice: "Office hours was successfully created." }
+        format.html { redirect_to root_path, notice: 'Office hours was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -26,7 +27,7 @@ class UsersController < ApplicationController
     @user = current_user
     respond_to do |format|
       if @user.update(office_hours_params)
-        format.html { redirect_to root_path, notice: "Office hours was successfully updated." }
+        format.html { redirect_to root_path, notice: 'Office hours was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -38,7 +39,7 @@ class UsersController < ApplicationController
 
   private
 
-  def office_hours_params 
+  def office_hours_params
     params.require(:user).permit(:office_hours_start, :office_hours_end)
   end
 end

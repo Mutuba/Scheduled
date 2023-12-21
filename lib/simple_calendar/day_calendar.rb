@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # lib/simple_calendar/day_calendar.rb
 
 module SimpleCalendar
@@ -6,7 +8,7 @@ module SimpleCalendar
 
     def initialize(view, options = {}, params = {})
       super(view, options)
-      
+
       @params = params
     end
 
@@ -14,7 +16,7 @@ module SimpleCalendar
       options.fetch(:number_of_days, 1)
     end
 
-    def end_date      
+    def end_date
       start_date + (number_of_days - 1).days
     end
 

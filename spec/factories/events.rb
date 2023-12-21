@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: events
@@ -23,8 +25,8 @@
 #
 FactoryBot.define do
   factory :event do
-    name { "MyString" }
-    color { "MyString" }
+    name { 'MyString' }
+    color { 'MyString' }
     duration { 1 }
     customer_paid { false }
     payment_required { false }

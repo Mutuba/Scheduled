@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: bookings
@@ -28,11 +30,11 @@
 FactoryBot.define do
   factory :booking do
     status { 1 }
-    first_name { "MyString" }
-    last_name { "MyString" }
-    email { "MyString" }
-    starts_at { "2023-12-20 16:13:49" }
-    ends_at { "2023-12-20 16:13:49" }
+    first_name { 'MyString' }
+    last_name { 'MyString' }
+    email { 'MyString' }
+    starts_at { '2023-12-20 16:13:49' }
+    ends_at { '2023-12-20 16:13:49' }
     customer_paid { false }
     time_slot { nil }
     event { nil }
