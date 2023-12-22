@@ -11,10 +11,10 @@ class UsersController < ApplicationController
     @user = current_user
     respond_to do |format|
       if @user.update(office_hours_params)
-        flash[:notice] = 'Office hours was successfully updated.'
-        format.html { redirect_to root_path }
-        # format.html { redirect_to root_path, notice: 'Office hours was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'Office hours was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
+        format.html { redirect_to root_path }
+
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @user.errors, status: :unprocessable_entity }
