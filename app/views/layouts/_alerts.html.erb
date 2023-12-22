@@ -2,16 +2,17 @@
   <div>
 
     <% flash.each do |type, content| %>
-  <% if content.is_a?(String) %>
-    <div class="alert alert-success">
-      <%= content %>
-    </div>
-  <% elsif content.is_a?(Hash) %>
-    <div class="alert alert-<%= content.fetch("type", 'success') %>">
-      <%= content.fetch("message", nil) %>
-    </div>
-  <% end %>
-<% end %>
+      <%binding.pry%>
+      <% if content.is_a?(String) %>
+        <div class="alert alert-success">
+          <%= content %>
+        </div>
+      <% elsif content.is_a?(Hash) %>
+        <div class="alert alert-<%= content.fetch("type", 'success') %>">
+          <%= content.fetch("message", nil) %>
+        </div>
+      <% end %>
+    <% end %>
 
   </div>
 </div>
