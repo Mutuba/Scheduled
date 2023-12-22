@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   root 'users#index'
   resources :events
   resources :bookings
-  resources :users, only: %i[create update new index]
+  resources :users, except: %i[destroy create]
 
   get 'dashboard', to: 'dashboard#index'
 end

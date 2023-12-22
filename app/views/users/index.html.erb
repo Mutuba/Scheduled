@@ -6,7 +6,7 @@
     <p>We are excited to have you.</p>
     <br />
 
-    <%= link_to "Set office hours", new_user_path, class: "btn btn-primary", data: { turbo_frame: "remote_modal" }%>
+    <%= link_to "Set office hours", edit_user_path(@current_user), class: "btn btn-primary", data: { turbo_frame: "remote_modal" }%>
     <button type='button' class="btn btn-primary" onclick="location.href='<%= dashboard_path() %>';">
       Go to Calendar
     </button>
