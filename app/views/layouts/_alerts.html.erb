@@ -2,7 +2,6 @@
   <div>
 
     <% flash.each do |type, content| %>
-      <%binding.pry%>
       <% if content.is_a?(String) %>
         <div class="alert alert-success">
           <%= content %>

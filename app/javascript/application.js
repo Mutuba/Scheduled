@@ -2,6 +2,3 @@
 import "@hotwired/turbo-rails";
 import "controllers";
 import "bootstrap";
-document.addEventListener("turbolinks:load", function () {
-  $('[data-bs-toggle="modal"]').modal();
-});
