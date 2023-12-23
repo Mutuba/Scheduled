@@ -72,7 +72,7 @@ RSpec.describe User, type: :model do
 
   describe 'User Creation with correct details' do
     context 'when required fields are present' do
-      it 'is valid with valid attributes' do
+      it 'is valid' do
         user = create(:user, email: 'random1234@gmail.com', password: 'random1234')
 
         expect(user).to be_valid

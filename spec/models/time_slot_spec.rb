@@ -28,7 +28,18 @@ RSpec.describe TimeSlot, type: :model do
     it { should validate_presence_of :event }
 
     context 'when required fields are present' do
-      it 'is valid with valid attributes' do
+      it 'is valid' do
+        time_slot = create(:time_slot)
+
+        expect(time_slot).to be_valid
+        expect do
+          create(:time_slot)
+        end.to change { TimeSlot.count }.by(1)
+      end
+    end
+
+    context 'when required fields are not present' do
+      it 'raises errors' do
         time_slot = create(:time_slot)
 
         expect(time_slot).to be_valid
