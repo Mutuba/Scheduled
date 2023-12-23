@@ -53,7 +53,6 @@ RSpec.describe User, type: :model do
         user = build(:user, password: 'short')
         expect(user).not_to be_valid
         expect(user.errors.messages[:password]).to include('is too short (minimum is 6 characters)')
-
         user = build(:user, password: 'a' * 129)
         expect(user).not_to be_valid
         expect(user.errors.messages[:password]).to include('is too long (maximum is 128 characters)')
@@ -74,7 +73,6 @@ RSpec.describe User, type: :model do
     context 'when required fields are present' do
       it 'is valid' do
         user = create(:user, email: 'random1234@gmail.com', password: 'random1234')
-
         expect(user).to be_valid
         expect do
           create(:user, email: 'random12345@gmail.com', password: 'random1234')
