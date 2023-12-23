@@ -33,7 +33,6 @@ RSpec.describe Event, type: :model do
     context 'when required fields are present' do
       it 'is valid' do
         event = create(:event)
-
         expect(event).to be_valid
         expect do
           create(:event)
@@ -46,7 +45,6 @@ RSpec.describe Event, type: :model do
       it 'raises errors' do
         event = Event.create(name: nil, description: nil)
         expect(event).not_to be_valid
-
         expect(event.errors.messages[:name]).to include("can't be blank")
         expect(event.errors.messages[:description]).to include("can't be blank")
       end

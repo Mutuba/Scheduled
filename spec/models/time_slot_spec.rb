@@ -30,7 +30,6 @@ RSpec.describe TimeSlot, type: :model do
     context 'when required fields are present' do
       it 'is valid' do
         time_slot = create(:time_slot)
-
         expect(time_slot).to be_valid
         expect do
           create(:time_slot)
@@ -44,7 +43,6 @@ RSpec.describe TimeSlot, type: :model do
         event = create(:event)
         time_slot = TimeSlot.create(start_at: nil, end_at: nil, event:)
         expect(time_slot).not_to be_valid
-
         expect(time_slot.errors.messages[:start_at]).to include("can't be blank")
         expect(time_slot.errors.messages[:end_at]).to include("can't be blank")
       end

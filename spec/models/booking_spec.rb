@@ -38,7 +38,6 @@ RSpec.describe Booking, type: :model do
     context 'when required fields are present' do
       it 'is valid' do
         booking = create(:booking)
-
         expect(booking).to be_valid
         expect do
           create(:booking)
@@ -51,7 +50,6 @@ RSpec.describe Booking, type: :model do
       it 'raises errors' do
         booking = Booking.create(email: nil, event: nil, time_slot: nil)
         expect(booking).not_to be_valid
-
         expect(booking.errors.messages[:email]).to include("can't be blank")
         expect(booking.errors.messages[:event]).to include("can't be blank")
         expect(booking.errors.messages[:time_slot]).to include("can't be blank")
