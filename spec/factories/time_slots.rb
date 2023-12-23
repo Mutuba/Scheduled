@@ -5,8 +5,8 @@
 # Table name: time_slots
 #
 #  id         :bigint           not null, primary key
-#  end_at     :datetime
-#  start_at   :datetime
+#  end_at     :datetime         not null
+#  start_at   :datetime         not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  event_id   :bigint           not null
@@ -23,6 +23,6 @@ FactoryBot.define do
   factory :time_slot do
     start_at { '2023-12-20 16:07:24' }
     end_at { '2023-12-20 16:07:24' }
-    event { nil }
+    association :event, factory: :event
   end
 end

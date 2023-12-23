@@ -37,7 +37,7 @@ FactoryBot.define do
     starts_at { '2023-12-20 16:13:49' }
     ends_at { '2023-12-20 16:13:49' }
     customer_paid { false }
-    time_slot { nil }
-    event { nil }
+    association :time_slot, factory: :time_slot
+    association :event, factory: :event
   end
 end

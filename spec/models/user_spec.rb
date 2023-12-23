@@ -6,7 +6,7 @@
 #
 #  id                     :bigint           not null, primary key
 #  avatar_url             :string
-#  email                  :string           default(""), not null
+#  email                  :string           not null
 #  encrypted_password     :string           default(""), not null
 #  first_name             :string
 #  full_name              :string
