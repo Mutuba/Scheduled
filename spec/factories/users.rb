@@ -31,5 +31,7 @@ FactoryBot.define do
   factory :user do
     first_name { 'Daniel' }
     last_name { 'Greenman' }
+    email { "daniel#{rand(6)}@example.com" }
+    password { 'password' }
   end
 end
