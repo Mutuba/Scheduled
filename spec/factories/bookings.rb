@@ -6,7 +6,7 @@
 #
 #  id            :bigint           not null, primary key
 #  customer_paid :boolean
-#  email         :string
+#  email         :string           not null
 #  ends_at       :datetime
 #  first_name    :string
 #  last_name     :string
@@ -27,13 +27,12 @@
 #  fk_rails_...  (event_id => events.id)
 #  fk_rails_...  (time_slot_id => time_slots.id)
 #
-# spec/factories/bookings.rb
 FactoryBot.define do
   factory :booking do
     status { 1 }
     first_name { 'MyString' }
     last_name { 'MyString' }
-    email { 'MyString' }
+    email { Faker::Internet.unique.email }
     starts_at { '2023-12-20 16:13:49' }
     ends_at { '2023-12-20 16:13:49' }
     customer_paid { false }

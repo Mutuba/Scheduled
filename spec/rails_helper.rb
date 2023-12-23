@@ -27,17 +27,10 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 
 RSpec.configure do |config|
-  config.include Warden::Test::Helpers
-  config.include ActionCable::TestHelper
-  config.include ActiveJob::TestHelper
-  ActiveJob::Base.queue_adapter = :test
-  config.include Devise::Test::IntegrationHelpers, type: :request
-  include ActiveSupport::Testing::TimeHelpers
   config.infer_spec_type_from_file_location!
   config.include Rails.application.routes.url_helpers, type: :request
 
   config.before(:suite) do
-    DatabaseCleaner.allow_remote_database_url = true
     DatabaseCleaner.clean_with(:truncation)
     DatabaseCleaner.strategy = :transaction
   end

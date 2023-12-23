@@ -6,7 +6,7 @@
 #
 #  id            :bigint           not null, primary key
 #  customer_paid :boolean
-#  email         :string
+#  email         :string           not null
 #  ends_at       :datetime
 #  first_name    :string
 #  last_name     :string
@@ -28,6 +28,11 @@
 #  fk_rails_...  (time_slot_id => time_slots.id)
 #
 class Booking < ApplicationRecord
+  enum status: { accepted: 0, rejected: 1 }
   belongs_to :time_slot
   belongs_to :event
+
+  validates :event, :time_slot, presence: true
+
+  validates :email, presence: true
 end

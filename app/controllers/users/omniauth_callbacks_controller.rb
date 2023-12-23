@@ -7,14 +7,9 @@ module Users
     def google_oauth2
       user = User.from_omniauth(auth)
       if user.persisted?
-        sign_out_all_scopes
-        flash[:success] = t 'devise.omniauth_callbacks.success', kind: 'Google'
-        sign_in_and_redirect user, event: :authentication
+        handle_successful_sign_in(user)
       else
-        session['devise.google_data'] = request.env['omniauth.auth'].except('extra')
-        flash[:alert] =
-          t 'devise.omniauth_callbacks.failure', kind: 'Google', reason: "#{auth.info.email} is not authorized."
-        redirect_to new_user_session_path
+        handle_failed_sign_in(auth)
       end
     end
 
@@ -32,6 +27,19 @@ module Users
 
     def auth
       @auth ||= request.env['omniauth.auth']
+    end
+
+    def handle_successful_sign_in(user)
+      sign_out_all_scopes
+      flash[:success] = t('devise.omniauth_callbacks.success', kind: 'Google')
+      sign_in_and_redirect user, event: :authentication
+    end
+
+    def handle_failed_sign_in(auth)
+      session['devise.google_data'] = auth.except('extra')
+      flash[:alert] =
+        t('devise.omniauth_callbacks.failure', kind: 'Google', reason: "#{auth.info.email} is not authorized.")
+      redirect_to new_user_session_path
     end
   end
 end
