@@ -25,9 +25,10 @@
 #
 FactoryBot.define do
   factory :event do
-    name { 'MyString' }
-    color { 'MyString' }
-    duration { 1 }
+    name { 'Random meeting' }
+    description { 'Awesome description' }
+    color { 'Random #fff' }
+    duration { 30 }
     customer_paid { false }
     payment_required { false }
     association :user, factory: :user

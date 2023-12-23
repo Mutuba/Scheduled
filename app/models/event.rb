@@ -26,9 +26,7 @@
 class Event < ApplicationRecord
   belongs_to :user
 
-  has_rich_text :description
+  validates :user, presence: true
 
-  def description
-    rich_text_description || build_rich_text_body(description: read_attribute(:description))
-  end
+  validates :name, :description, presence: true
 end
