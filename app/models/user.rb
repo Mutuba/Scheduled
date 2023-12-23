@@ -6,9 +6,11 @@
 #
 #  id                     :bigint           not null, primary key
 #  avatar_url             :string
-#  email                  :string           default(""), not null
+#  email                  :string           not null
 #  encrypted_password     :string           default(""), not null
-#  fullname               :string
+#  first_name             :string
+#  full_name              :string
+#  last_name              :string
 #  office_hours_end       :time
 #  office_hours_start     :time
 #  provider               :string
@@ -31,14 +33,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:google_oauth2]
 
-  validates :email, presence: true, uniqueness: true
-
-
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.email = auth.info.email
+      user.email = auth.info.email if auth.info.email.present?
       user.password = Devise.friendly_token[0, 20]
-      user.fullname = auth.info.name
+      user.full_name = auth.info.name
       user.avatar_url = auth.info.image
     end
   end

@@ -27,6 +27,7 @@
 #  fk_rails_...  (event_id => events.id)
 #  fk_rails_...  (time_slot_id => time_slots.id)
 #
+# spec/factories/bookings.rb
 FactoryBot.define do
   factory :booking do
     status { 1 }

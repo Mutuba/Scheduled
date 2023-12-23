@@ -6,9 +6,11 @@
 #
 #  id                     :bigint           not null, primary key
 #  avatar_url             :string
-#  email                  :string           default(""), not null
+#  email                  :string           not null
 #  encrypted_password     :string           default(""), not null
-#  fullname               :string
+#  first_name             :string
+#  full_name              :string
+#  last_name              :string
 #  office_hours_end       :time
 #  office_hours_start     :time
 #  provider               :string
@@ -27,8 +29,7 @@
 #
 FactoryBot.define do
   factory :user do
-    email { 'jane.doe@hey.com' }
-    password { 'SecretPassword123' }
-    password_confirmation { 'SecretPassword123' }
+    first_name { 'Daniel' }
+    last_name { 'Greenman' }
   end
 end
