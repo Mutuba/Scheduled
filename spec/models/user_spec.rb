@@ -77,7 +77,7 @@ RSpec.describe User, type: :model do
 
         expect(user).to be_valid
         expect do
-          user = create(:user, email: 'random12345@gmail.com', password: 'random1234')
+          create(:user, email: 'random12345@gmail.com', password: 'random1234')
         end.to change { User.count }.by(1)
       end
     end
