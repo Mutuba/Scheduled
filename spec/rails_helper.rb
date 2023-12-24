@@ -28,6 +28,15 @@ end
 RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.include Rails.application.routes.url_helpers, type: :request
+  config.include Warden::Test::Helpers
+  config.include Devise::Test::IntegrationHelpers, type: :request
+  config.before(:each, type: :request) do
+    ActionController::Base.allow_forgery_protection = false
+  end
+
+  config.after(:each, type: :request) do
+    ActionController::Base.allow_forgery_protection = true
+  end
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)

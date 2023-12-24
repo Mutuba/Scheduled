@@ -6,6 +6,7 @@ module Users
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     def google_oauth2
       user = User.from_omniauth(auth)
+     
       if user.persisted?
         handle_successful_sign_in(user)
       else
