@@ -23,7 +23,6 @@ RSpec.describe 'Users::OmniauthCallbacks', type: :request do
     # context 'when user fails to authenticate' do
     #   it 'redirects to the sign-in path with an error message' do
     #     OmniAuth.config.mock_auth[:google_oauth2] = :invalid_credentials
-
     #     # Simulate the entire OAuth callback process
     #     get '/users/auth/google_oauth2/callback'
 
