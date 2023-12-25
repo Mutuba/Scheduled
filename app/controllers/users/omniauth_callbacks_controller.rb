@@ -4,6 +4,8 @@
 
 module Users
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
+    skip_before_action :verify_authenticity_token, only: :google_oauth2
+
     def google_oauth2
       user = User.from_omniauth(auth)
      
@@ -15,11 +17,6 @@ module Users
     end
 
     protected
-
-    def after_omniauth_failure_path_for(_scope)
-      root_path
-    end
-
     def after_sign_in_path_for(resource_or_scope)
       stored_location_for(resource_or_scope) || root_path
     end

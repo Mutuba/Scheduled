@@ -6,7 +6,10 @@ require_relative '../config/environment'
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 require 'database_cleaner'
+require 'omniauth'
+require 'omniauth-oauth2'
 
+OmniAuth.config.test_mode = true
 # Require support files
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
 
@@ -30,6 +33,10 @@ RSpec.configure do |config|
   config.include Rails.application.routes.url_helpers, type: :request
   config.include Warden::Test::Helpers
   config.include Devise::Test::IntegrationHelpers, type: :request
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :view
+  config.include Devise::Test::IntegrationHelpers, type: :feature
+
   config.before(:each, type: :request) do
     ActionController::Base.allow_forgery_protection = false
   end
