@@ -4,15 +4,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
   include Devise::Controllers::Helpers
 
-  before_action :set_time_zone, if: :user_signed_in?
+  before_action :set_time_zone, if: :user_signed_in?, except: [:destroy]
 
   private
 
   def set_time_zone
-    user_timezone = determine_user_timezone
-
-    if user_timezone.present?
-      update_user_timezone(user_timezone)
+    timezone = determine_timezone
+    if timezone.present?
+      update_timezone(timezone)
     else
       handle_invalid_timezone
     end
@@ -22,25 +21,26 @@ class ApplicationController < ActionController::Base
     handle_unexpected_error(e)
   end
 
-  def determine_user_timezone
-    session[:user_timezone].presence || fetch_user_timezone_from_geocoder
+  def determine_timezone
+    session[:timezone] = 'UTC' if request.local?
+    session[:timezone].presence || fetch_timezone_from_geocoder
   end
 
-  def fetch_user_timezone_from_geocoder
+  def fetch_timezone_from_geocoder
     result = Geocoder.search(request.ip).first
 
     if result&.data&.key?('timezone')
-      user_timezone = result.data['timezone']
-      session[:user_timezone] = user_timezone
-      user_timezone
+      timezone = result.data['timezone']
+      session[:timezone] = timezone
+      timezone
     else
       handle_invalid_timezone
     end
   end
 
-  def update_user_timezone(user_timezone)
-    Time.zone = user_timezone || 'UTC'
-    current_user.update!(timezone: user_timezone)
+  def update_timezone(timezone)
+    Time.zone = timezone || 'UTC'
+    current_user.update!(timezone: timezone)
   end
 
   def handle_invalid_timezone

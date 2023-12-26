@@ -7,7 +7,7 @@ module Users
     end
 
     def destroy
-      session[:user_timezone] = nil if session[:user_timezone].present?
+      session[:timezone] = nil if session[:timezone].present?
       super
       flash[:notice] = { type: 'success', message: 'Successfully signed out.' }
     end
