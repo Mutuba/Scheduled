@@ -7,9 +7,9 @@
 #  id               :bigint           not null, primary key
 #  color            :string
 #  customer_paid    :boolean
-#  description      :string
+#  description      :string           not null
 #  duration         :integer
-#  name             :string
+#  name             :string           not null
 #  payment_required :boolean
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null

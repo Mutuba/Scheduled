@@ -15,7 +15,7 @@ Rails.application.configure do
 
   config.hosts << /[a-z0-9]+\.ngrok\.io/
 
-  config.hosts << 'b870-105-163-158-239.ngrok-free.app'
+  config.hosts << '844f-105-163-2-206.ngrok-free.app'
 
   # Show full error reports.
   config.consider_all_requests_local = true
