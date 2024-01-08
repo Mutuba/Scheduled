@@ -9,8 +9,10 @@
 #  customer_paid    :boolean
 #  description      :string           not null
 #  duration         :integer
+#  end_at           :datetime         not null
 #  name             :string           not null
 #  payment_required :boolean
+#  start_at         :datetime         not null
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  user_id          :bigint           not null
@@ -29,7 +31,8 @@ RSpec.describe Event, type: :model do
   describe 'Validations' do
     it { should validate_presence_of :description }
     it { should validate_presence_of :name }
-
+    it { should validate_presence_of :start_at }
+    it { should validate_presence_of :end_at }
     context 'when required fields are present' do
       it 'is valid' do
         event = create(:event)
@@ -43,10 +46,13 @@ RSpec.describe Event, type: :model do
 
     context 'when required fields are not present' do
       it 'raises errors' do
-        event = Event.create(name: nil, description: nil)
+        event = Event.create(name: nil, description: nil, start_at: nil, end_at: nil)
         expect(event).not_to be_valid
         expect(event.errors.messages[:name]).to include("can't be blank")
         expect(event.errors.messages[:description]).to include("can't be blank")
+        expect(event.errors.messages[:start_at]).to include("can't be blank")
+        expect(event.errors.messages[:start_at]).to include("can't be blank")
+
       end
     end
   end

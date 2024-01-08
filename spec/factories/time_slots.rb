@@ -5,8 +5,8 @@
 # Table name: time_slots
 #
 #  id         :bigint           not null, primary key
-#  end_at     :datetime         not null
-#  start_at   :datetime         not null
+#  end_at     :datetime
+#  start_at   :datetime
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  event_id   :bigint           not null

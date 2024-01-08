@@ -15,24 +15,20 @@
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  event_id      :bigint           not null
-#  time_slot_id  :bigint           not null
 #
 # Indexes
 #
-#  index_bookings_on_event_id      (event_id)
-#  index_bookings_on_time_slot_id  (time_slot_id)
+#  index_bookings_on_event_id  (event_id)
 #
 # Foreign Keys
 #
 #  fk_rails_...  (event_id => events.id)
-#  fk_rails_...  (time_slot_id => time_slots.id)
 #
 class Booking < ApplicationRecord
   enum status: { accepted: 0, rejected: 1 }
-  belongs_to :time_slot
   belongs_to :event
 
-  validates :event, :time_slot, presence: true
+  validates :event, presence: true
 
   validates :email, presence: true
 end

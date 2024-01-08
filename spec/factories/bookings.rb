@@ -15,17 +15,14 @@
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  event_id      :bigint           not null
-#  time_slot_id  :bigint           not null
 #
 # Indexes
 #
-#  index_bookings_on_event_id      (event_id)
-#  index_bookings_on_time_slot_id  (time_slot_id)
+#  index_bookings_on_event_id  (event_id)
 #
 # Foreign Keys
 #
 #  fk_rails_...  (event_id => events.id)
-#  fk_rails_...  (time_slot_id => time_slots.id)
 #
 FactoryBot.define do
   factory :booking do
@@ -36,7 +33,6 @@ FactoryBot.define do
     starts_at { '2023-12-20 16:13:49' }
     ends_at { '2023-12-20 16:13:49' }
     customer_paid { false }
-    association :time_slot, factory: :time_slot
     association :event, factory: :event
   end
 end

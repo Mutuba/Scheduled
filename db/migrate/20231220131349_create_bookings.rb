@@ -10,7 +10,6 @@ class CreateBookings < ActiveRecord::Migration[7.0]
       t.datetime :starts_at
       t.datetime :ends_at
       t.boolean :customer_paid
-      t.references :time_slot, null: false, foreign_key: true
       t.references :event, null: false, foreign_key: true
 
       t.timestamps

@@ -9,8 +9,10 @@
 #  customer_paid    :boolean
 #  description      :string           not null
 #  duration         :integer
+#  end_at           :datetime         not null
 #  name             :string           not null
 #  payment_required :boolean
+#  start_at         :datetime         not null
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  user_id          :bigint           not null
@@ -28,5 +30,5 @@ class Event < ApplicationRecord
 
   validates :user, presence: true
 
-  validates :name, :description, presence: true
+  validates :name, :description, :start_at, :end_at, presence: true
 end
