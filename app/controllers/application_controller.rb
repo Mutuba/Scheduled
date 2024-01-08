@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
 
   def update_timezone(timezone)
     Time.zone = timezone || 'UTC'
-    current_user.update!(timezone: timezone)
+    current_user.update!(timezone:)
   end
 
   def handle_invalid_timezone

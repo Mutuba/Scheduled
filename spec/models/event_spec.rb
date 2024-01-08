@@ -52,7 +52,6 @@ RSpec.describe Event, type: :model do
         expect(event.errors.messages[:description]).to include("can't be blank")
         expect(event.errors.messages[:start_at]).to include("can't be blank")
         expect(event.errors.messages[:start_at]).to include("can't be blank")
-
       end
     end
   end
