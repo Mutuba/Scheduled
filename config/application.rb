@@ -29,6 +29,7 @@ module Scheduled
     config.i18n.available_locales = %i[en de fr]
     config.i18n.default_locale = :en
     config.beginning_of_week = :sunday
+    config.assets.enabled = true
     config.assets.precompile += %w[simple_calendar_custom.css]
 
     config.geocoder = {

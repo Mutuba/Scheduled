@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @user = current_user
     respond_to do |format|
       if @user.update(office_hours_params)
-        format.html { redirect_to root_path, notice: 'Office hours was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'Office hours was successfully set.' }
         format.json { render :show, status: :ok, location: @user }
         format.html { redirect_to root_path }
 
